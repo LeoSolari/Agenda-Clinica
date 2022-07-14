@@ -1,4 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   background-color: #379cf1;
@@ -50,6 +52,8 @@ const Input = styled.input`
 
 const Button = styled.button`
   background-color: #182b80;
+  text-align: center;
+  text-decoration: none;
   border: none;
   height: 50px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -68,19 +72,46 @@ const Button = styled.button`
 `;
 
 const Login = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [mensaje, setMensaje] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    if (userName === "user" && password === "password") {
+      setMensaje(`Bienvenido ${userName}`);
+    } else {
+      setMensaje("Usuario Incorrecto");
+    }
+  };
+
   return (
     <Container>
       <Title>Agenda Clínica</Title>
       <Form>
         <Field>
-          <Label>Usuario</Label>
-          <Input type="text" placeholder="Ingrese su usuario" />
+          <Label htmlFor="userName">Usuario</Label>
+          <Input
+            type="text"
+            value={userName}
+            placeholder="Ingrese su usuario"
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </Field>
         <Field>
-          <Label>Password</Label>
-          <Input type="password" placeholder="Ingrese su password" />
+          <Label htmlFor="password">Password</Label>
+          <Input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Ingrese su contraseña"
+          />
         </Field>
-        <Button>Ingresar</Button>
+        <h2>{mensaje}</h2>
+        <Button onClick={handleLogin} type="submit">
+          Comprobar usuario
+        </Button>
       </Form>
     </Container>
   );
