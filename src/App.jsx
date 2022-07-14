@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Main from "./pages/Main";
 import NotFound from "./pages/NotFound";
 import NewUser from "./pages/NewUser";
+import Pacientes from "./pages/Pacientes";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/main" element={<Main />} />
         <Route path="/new-user" element={<NewUser />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/pacientes" element={<Pacientes />} />
       </Routes>
     </BrowserRouter>
   );
