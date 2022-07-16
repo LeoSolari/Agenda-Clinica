@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -80,6 +80,10 @@ const Login = () => {
   const [usuarioValidado, setUsuarioValidado] = useState("");
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    setError("");
+  }, [userName, password]);
+
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -89,7 +93,12 @@ const Login = () => {
       setUsuarioValidado(false);
     }
 
-    if (userName.length <= 5 || userName.length >= 15) {
+    if (password === "" && userName === "") {
+      setError("Debes completar ambos campos");
+      return;
+    }
+
+    if (userName.length <= 3 || userName.length >= 15) {
       setError("El usuario no es valido.");
       return;
     }
@@ -98,27 +107,30 @@ const Login = () => {
       setError("La contraseña no es valida");
       return;
     }
-
-    if (password.length === 0 && userName.length === 0) {
-      setError("Debes completar ambos campos");
-      return;
-    }
   };
 
   return (
     <Container>
       <Title>Agenda Clínica</Title>
-      <Link style={{ backgroundColor: "yellow" }} to="/main">
-        HAZ CLICK AQUI
-      </Link>
       <Form>
         <Field>
-          <Label>Usuario</Label>
-          <Input type="text" placeholder="Ingrese su usuario" />
+          <Label htmlFor="userName">Usuario</Label>
+          <Input
+            autoComplete="off"
+            id="userName"
+            type="text"
+            placeholder="Ingrese su usuario"
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </Field>
         <Field>
-          <Label>Password</Label>
-          <Input type="password" placeholder="Ingrese su password" />
+          <Label htmlFor="password">Password</Label>
+          <Input
+            id="password"
+            type="password"
+            placeholder="Ingrese su password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </Field>
         <H2>
           {usuarioValidado ? (
