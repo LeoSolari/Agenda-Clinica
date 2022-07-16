@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Navegacion from "../components/Navegacion";
 
 const Year = styled.div`
   display: flex;
@@ -131,8 +132,24 @@ const Main = () => {
 
   console.log(year);
 
+  const eachMonth = [
+    { nombre: "Enero", id: 1 },
+    { nombre: "Febrero", id: 2 },
+    { nombre: "Marzo", id: 3 },
+    { nombre: "Abril", id: 4 },
+    { nombre: "Mayo", id: 5 },
+    { nombre: "Junio", id: 6 },
+    { nombre: "Julio", id: 7 },
+    { nombre: "Agosto", id: 8 },
+    { nombre: "Septiembre", id: 9 },
+    { nombre: "Octubre", id: 10 },
+    { nombre: "Noviembre", id: 11 },
+    { nombre: "Diciembre", id: 12 },
+  ];
+
   return (
     <>
+      <Navegacion />
       <Year>
         <ArrowButton>
           <i className="fa-solid fa-circle-left"></i>
@@ -145,54 +162,12 @@ const Main = () => {
         </ArrowButton>
       </Year>
       <Grid>
-        <Months>
-          Enero
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
-        <Months>
-          Febrero
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
-        <Months>
-          Marzo
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
-        <Months>
-          Abril
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
-        <Months>
-          Mayo
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
-        <Months>
-          Junio
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
-        <Months>
-          Julio
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
-        <Months>
-          Agosto
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
-        <Months>
-          Septiembre
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
-        <Months>
-          Octubre
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
-        <Months>
-          Noviembre
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
-        <Months>
-          Diciembre
-          <HiddenText>Haz click para ver tus citas</HiddenText>
-        </Months>
+        {eachMonth.map((mes) => (
+          <Months key={mes.id}>
+            {mes.nombre}
+            <HiddenText>Haz click para ver tus citas</HiddenText>
+          </Months>
+        ))}
       </Grid>
     </>
   );

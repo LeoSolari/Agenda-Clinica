@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   background-color: #379cf1;
@@ -67,10 +69,48 @@ const Button = styled.button`
   }
 `;
 
+const H2 = styled.h2`
+  text-align: center;
+  margin-top: 10px;
+`;
+
 const Login = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [usuarioValidado, setUsuarioValidado] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    if (userName === "user" && password === "password") {
+      setUsuarioValidado(true);
+    } else {
+      setUsuarioValidado(false);
+    }
+
+    if (userName.length <= 5 || userName.length >= 15) {
+      setError("El usuario no es valido.");
+      return;
+    }
+
+    if (password.length <= 5 || password.length >= 16) {
+      setError("La contraseña no es valida");
+      return;
+    }
+
+    if (password.length === 0 && userName.length === 0) {
+      setError("Debes completar ambos campos");
+      return;
+    }
+  };
+
   return (
     <Container>
       <Title>Agenda Clínica</Title>
+      <Link style={{ backgroundColor: "yellow" }} to="/main">
+        HAZ CLICK AQUI
+      </Link>
       <Form>
         <Field>
           <Label>Usuario</Label>
@@ -80,7 +120,18 @@ const Login = () => {
           <Label>Password</Label>
           <Input type="password" placeholder="Ingrese su password" />
         </Field>
-        <Button>Ingresar</Button>
+        <H2>
+          {usuarioValidado ? (
+            <Link style={{ backgroundColor: "yellow" }} to="/main">
+              Haz click aqui para ingresar
+            </Link>
+          ) : (
+            <p style={{ backgroundColor: "red" }}>{error}</p>
+          )}
+        </H2>
+        <Button onClick={handleLogin} type="submit">
+          Comprobar usuario
+        </Button>
       </Form>
     </Container>
   );

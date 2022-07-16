@@ -1,7 +1,13 @@
 import React from "react";
+import Navegacion from "../components/Navegacion";
 
 const NewUser = () => {
-  return <div>NewUser Create</div>;
+  return (
+    <>
+      <Navegacion />
+      <div>Nuevo usuario</div>
+    </>
+  );
 };
 
 export default NewUser;
