@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import NewUser from "./pages/NewUser";
 import Pacientes from "./pages/Pacientes";
 import FakeList from "./components/FakeList";
+import Meses from "./pages/Meses";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/pacientes" element={<Pacientes />} />
         <Route path="/prueba" element={<FakeList />} />
+        <Route path="/meses" element={<Meses />} />
       </Routes>
     </BrowserRouter>
   );
