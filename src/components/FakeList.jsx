@@ -10,15 +10,13 @@ const P = styled.p`
 const FakeList = () => {
   return (
     <div>
-      <h1>
-        {fakePatients.map((item) => (
-          <h4 key={item.id}>
-            <P>
-              {item.id} - {item.name}
-            </P>
-          </h4>
-        ))}
-      </h1>
+      {fakePatients.map((item) => (
+        <h2 key={item.id}>
+          <P>
+            {item.id} - {item.name}
+          </P>
+        </h2>
+      ))}
     </div>
   );
 };
