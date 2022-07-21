@@ -8,11 +8,12 @@ import Modal from "react-modal";
 const Container = styled.div`
   background-color: #379cf1;
   align-items: center;
+  height: 100vw;
 `;
 
 const ContainerPaciente = styled.div`
   background-color: #379cf1;
-  height: 100vh;
+
   display: flex;
   justify-content: center;
 `;
@@ -20,13 +21,6 @@ const ContainerPaciente = styled.div`
 const DivArray = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const DivPatients = styled.div`
-  background-color: aliceblue;
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
 `;
 
 const customStyles = {

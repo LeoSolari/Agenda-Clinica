@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import Navegacion from "../components/Navegacion";
 
+const Container = styled.div`
+  background-color: #379cf1;
+`;
+
 const Year = styled.div`
   display: flex;
   justify-content: center;
@@ -13,12 +17,14 @@ const Year = styled.div`
 
 const ArrowButton = styled.button`
   color: #2d2e2f;
-  background-color: #f1f4f8;
-  border: none;
+  background-color: #064d88;
+  border: 1px solid black;
   padding: 0.2em;
   font-size: 100%;
+
   &:hover {
     cursor: pointer;
+    background-color: lightgreen;
   }
   &:nth-child(1) {
     border-top-left-radius: 10px;
@@ -32,7 +38,7 @@ const ArrowButton = styled.button`
 
 const YearContainer = styled.div`
   color: #2d2e2f;
-  background-color: #f1f4f8;
+  background-color: #064d88;
   padding: 0.2em 70px;
 `;
 
@@ -133,7 +139,7 @@ const Main = () => {
   console.log(year);
 
   const eachMonth = [
-    { nombre: "Enero", id: 1 },
+    { nombre: "Enero", id: 1, url: `/meses` },
     { nombre: "Febrero", id: 2 },
     { nombre: "Marzo", id: 3 },
     { nombre: "Abril", id: 4 },
@@ -148,7 +154,7 @@ const Main = () => {
   ];
 
   return (
-    <>
+    <Container>
       <Navegacion />
       <Year>
         <ArrowButton>
@@ -169,7 +175,7 @@ const Main = () => {
           </Months>
         ))}
       </Grid>
-    </>
+    </Container>
   );
 };
 

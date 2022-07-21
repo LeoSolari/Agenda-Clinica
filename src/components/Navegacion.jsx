@@ -6,18 +6,20 @@ const Container = styled.div`
   background-color: #0387f3;
   display: flex;
   justify-content: space-around;
+  font-size: 2.5em;
   margin-bottom: 1em;
-  &:hover {
-  }
+  width: 100%;
 `;
 
 const NavgLink = styled(NavLink)`
-  background-color: red;
+  background-color: #064d88;
+  color: wheat;
+  text-decoration: none;
   width: 100%;
   text-align: center;
+  border: 1px solid black;
   &:hover {
-    background-color: #064d88;
-    color: red;
+    background-color: red;
   }
 `;
 
@@ -26,7 +28,7 @@ const Navegacion = () => {
     <Container>
       <NavgLink to="/main">Pagina Principal</NavgLink>
       <NavgLink to="/new-user">Nuevo Usuario</NavgLink>
-      <NavgLink to="/pacientes">Listado de Usuarios</NavgLink>
+      <NavgLink to="/pacientes">Listado de Pacientes</NavgLink>
     </Container>
   );
 };
